@@ -35,6 +35,7 @@ const b = ( bubble ) => {
         }
         bubble.background(50);
         bubble.stroke(255);
+        bubble.strokeWeight(0.5);
         for(k = 0; k < val.length; k++){
             bubble.line(k, bubble.height, k, bubble.height-val[k]);
         }
@@ -47,18 +48,29 @@ let bubble = new p5(b, 'bubble');
 
 const q = ( quick ) => {
     let val = [];
+    let start = 0;
+    let end = val.length-1;
+    let pivotIndex = 0;
+    let pivotValue = val[val.length-1];
     quick.setup = () => {
         quick.createCanvas(100,50);
         quick.background(0);
         for(k = 0; k < quick.width; k++){
             val.push(Math.floor((Math.random() * quick.height) + 1));
         }
-        quick.quickSort(val, 0, val.length-1);
+        //quick.quickSort(val, 0, val.length-1);
     }
 
     quick.draw = () => {
         quick.background(50);
         quick.stroke(255);
+        quick.strokeWeight(0.5);
+        /*if(start >= end){
+            noLoop();
+        }
+        //let index = quick.partition(val,start,end);*/
+        quick.quickSort(val, 0, val.length-1);
+
         for(i = 0; i < val.length; i++){
             quick.line(i, quick.height, i, quick.height-val[i]);
         }
@@ -68,7 +80,7 @@ const q = ( quick ) => {
         if(start >= end) return;
 
         let index = quick.partition(arr, start, end);
-
+        
         quick.quickSort(arr,start, index-1);
         quick.quickSort(arr, index+1, end);
     }
@@ -87,6 +99,7 @@ const q = ( quick ) => {
         let temp = arr[pivotIndex];
         arr[pivotIndex] = arr[end];
         arr[end] = temp;
+
         return pivotIndex;
     }
 }
