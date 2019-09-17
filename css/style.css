@@ -1,0 +1,16 @@
+
+.container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.container div{
+    margin: 20px;
+}
+.container #bubble span{
+    align-self: center;
+}
+.container div canvas{
+
+}
