@@ -64,7 +64,7 @@ const q = ( quick ) => {
     quick.draw = () => {
         quick.background(50);
         quick.stroke(255);
-        //quick.strokeWeight(1);
+        quick.strokeWeight(1);
         /*if(start >= end){
             noLoop();
         }
@@ -86,26 +86,40 @@ async function quickSort(arr, start, end){
     
     await quickSort(arr,start, index-1);
     await quickSort(arr, index+1, end);
+    // await sleep(1);
 }
 
 async function partition(arr, start, end){
+
+    await sleep(1);
     let pivotIndex = start;
     let indexValue = arr[end];
     for(i = start; i < end; i++){
         if(arr[i] < indexValue){
-            let temp = arr[i];
+            swap(arr, i, pivotIndex);
+            /*let temp = arr[i];
             arr[i] = arr[pivotIndex];
-            arr[pivotIndex] = temp;
+            arr[pivotIndex] = temp;*/
             pivotIndex++;
         }
     }
-    let temp = arr[pivotIndex];
+    await swap(arr, pivotIndex, end);
+    //await sleep(10);
+    /*let temp = arr[pivotIndex];
     arr[pivotIndex] = arr[end];
     arr[end] = temp;
-
+    */
     return pivotIndex;
 }
 
 async function swap(arr, a, b){
 
+    let temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+
+}
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
