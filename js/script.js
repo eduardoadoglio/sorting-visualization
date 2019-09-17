@@ -134,7 +134,6 @@ const m = ( merge ) => {
         merge.createCanvas(500,200);
         merge.background(50);
         merge.stroke(255);
-        merge.frameRate(120);
         for(k = 0; k < merge.width; k++){
             val.push(Math.floor((Math.random() * merge.height) + 1));
             merge.line(k, merge.height, k, merge.height-val[k]);
@@ -145,7 +144,7 @@ const m = ( merge ) => {
         merge.background(50);
         merge.stroke(255);
         merge.strokeWeight(1);
-        merge.frameRate(24);
+        merge.frameRate(5);
 
         val = mergeSort(val, depth);
         depth++;
